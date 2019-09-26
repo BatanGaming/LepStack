@@ -3,6 +3,7 @@
 #include <chrono>
 #include <vector>
 #include <random>
+
 using Graph = std::vector<std::vector<size_t>>;
 
 template<class StackT>
@@ -148,7 +149,7 @@ void sort_stack(StackT<T>& stack) {
 	}
 }
 
-std::vector<size_t> get_odd_nodes(const Graph& graph) {
+inline std::vector<size_t> get_odd_nodes(const Graph& graph) {
 	std::vector<size_t> oddNodes;
 	for (size_t i = 0; i < graph.size(); ++i) {
 		if (std::count_if(graph[i].begin(), graph[i].end(), [](size_t a) {return a != 0; }) % 2 != 0)
@@ -157,7 +158,7 @@ std::vector<size_t> get_odd_nodes(const Graph& graph) {
 	return oddNodes;
 }
 
-Graph create_eulerian_graph(size_t nodes) {
+inline Graph create_eulerian_graph(size_t nodes) {
 	Graph graph(nodes);
 	std::random_device rand;
 	std::mt19937 mersenne(rand());
